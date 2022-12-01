@@ -1,0 +1,21 @@
+{
+    "name": "UnderLogic.Channels.Editor.Tests",
+    "rootNamespace": "UnderLogic.Channels.Editor.Tests",
+    "references": [
+        "GUID:7dadf13d2f02d44498a8b6a41222fcd0",
+        "GUID:95ef6683b8c8f44949eb968298b2240a",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:27619889b8ba8c24980f49ee34dbb44a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

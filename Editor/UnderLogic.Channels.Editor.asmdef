@@ -1,0 +1,18 @@
+{
+    "name": "UnderLogic.Channels.Editor",
+    "rootNamespace": "UnderLogic.Channels.Editor",
+    "references": [
+        "GUID:7dadf13d2f02d44498a8b6a41222fcd0"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
