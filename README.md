@@ -1,4 +1,4 @@
-# Runtime Variables
+# Event Channels
 
 Unity package library for sending and receiving events across components and scenes.
 Uses `ScriptableObjects` to represent event channels and exposes events for subscribing and unsubscribing to them.
