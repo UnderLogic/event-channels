@@ -1,10 +1,8 @@
-using UnityEditor;
 using UnityEngine;
 
-namespace UnderLogic.Channels.Editor
+namespace UnderLogic.Channels.Listeners.Editor
 {
-    [CustomEditor(typeof(EventChannel), true)]
-    public class EventChannelEditor : UnityEditor.Editor
+    public abstract class EventListenerEditor<TChannel> : UnityEditor.Editor where TChannel : EventChannel
     {
         private static readonly GUILayoutOption[] ButtonLayout =
         {
@@ -21,8 +19,8 @@ namespace UnderLogic.Channels.Editor
             GUILayout.Space(4);
             if (GUILayout.Button("Raise Event", ButtonLayout))
             {
-                if (target is EventChannel channel)
-                    channel.RaiseEvent();
+                if (target is EventListener<TChannel> listener)
+                    listener.RaiseEvent();
             }
         }
     }

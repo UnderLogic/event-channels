@@ -8,7 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `EventChannelEditor` - custom editor  
+- `EventChannelEditor` - custom editor
+- `EventListenerEditor<TChannel>` - abstract base class
+- `VoidEventListenerEditor` - custom editor
+
+### Fixed
+
+- Small fixes in Listeners sample scene
 
 ## [0.2.0] - 2022-12-01
 

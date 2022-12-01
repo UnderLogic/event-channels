@@ -18,18 +18,22 @@ namespace UnderLogic.Channels.Samples.Listeners.Scripts
 
         public void AddGold(int amount)
         {
-            _gold = Mathf.Clamp(_gold + amount, 0, 1000000);
-            
-            UpdateDisplay();
-            UpdateBuyButton();
-            
+            AdjustGold(amount);
             Debug.Log($"Gold is now {_gold}, earned {amount}!");
         }
 
         public void SubtractGold(int amount)
         {
-            AddGold(-amount);
+            AdjustGold(-amount);
             Debug.Log($"Gold is now {_gold}, spent {amount}!");
+        }
+
+        private void AdjustGold(int amount)
+        {
+            _gold = Mathf.Clamp(_gold + amount, 0, 1000000);
+            
+            UpdateDisplay();
+            UpdateBuyButton();
         }
 
         private void UpdateDisplay()
