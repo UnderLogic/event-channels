@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Runtime
+namespace UnderLogic.Channels
 {
     public abstract class EventChannel : ScriptableObject
     {

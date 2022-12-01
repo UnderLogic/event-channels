@@ -1,6 +1,6 @@
 {
   "name": "com.underlogic.event-channels",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "Event Channels",
   "description": "Event channels for sending and receiving data between components across scenes",
   "unity": "2019.1",
@@ -24,5 +24,9 @@
     "displayName": "Using Channels",
     "description": "Contains sample scene demonstrating the use of event channels",
     "path": "Samples~/Channels"
+  }, {
+    "displayName": "Using Listeners",
+    "description": "Contains sample scene demonstrating the use of event channel listener components",
+    "path": "Samples~/Listeners"
   }]
 }

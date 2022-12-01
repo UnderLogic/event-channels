@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Runtime
+namespace UnderLogic.Channels
 {
     [CreateAssetMenu(menuName = "Channels/Bool Event Channel")]
     public class BoolEventChannel : EventChannel<bool> { }
