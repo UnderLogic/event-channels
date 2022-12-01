@@ -8,3 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `EventChannel` abstract base class
+- `EventChannel<T>` abstract base class
+- `BoolEventChannel` variant
+- `DoubleEventChannel` variant
+- `FloatEventChannel` variant
+- `IntEventChannel` variant
+- `StringEventChannel` variant
+- `TransformEventChannel` variant
+- `VoidEventChannel` variant
