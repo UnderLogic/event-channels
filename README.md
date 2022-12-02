@@ -1,5 +1,7 @@
 # Event Channels
 
+[![openupm](https://img.shields.io/npm/v/com.underlogic.event-channels?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.underlogic.event-channels/)
+
 Unity package library for sending and receiving events across components and scenes.
 Uses `ScriptableObjects` to represent event channels and exposes events for subscribing and unsubscribing to them.
 
@@ -7,8 +9,10 @@ Heavily inspired by the infamous [Unite 2017: Game Architecture with Scriptable 
 
 ## Installation
 
-The package library can be installed to your Unity project one of two ways:
+The package library can be installed to your Unity project in the following ways:
 
+- Using [OpenUPM](https://openupm.com/) package manager
+    - `openupm add com.underlogic.event-channels`
 - Clone the repository and adding it as a local package
 - Add the package by git URL
 
