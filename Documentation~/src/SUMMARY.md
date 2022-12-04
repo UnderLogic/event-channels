@@ -1,6 +1,7 @@
 # Summary
 
 - [Overview](./overview.md)
+- [Changelog](./CHANGELOG.md)
 
 # User Guide
 
