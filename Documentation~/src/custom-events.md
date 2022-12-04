@@ -16,8 +16,8 @@ This will ensure you also get the custom editor for manually invoking the event.
 
 ## Listeners
 
-1. Create a new class that derives from `EventListener<T, TChannel>` where `T` should be the underlying type and `TChannel` is the event channel type.
+1. Create a new class that derives from [`EventListener<T, TChannel>`](listeners/event-listener-generic.md) where `T` should be the underlying type and `TChannel` is the event channel type.
 2. Now you can use the event listener in your components
 
-**NOTE:** If you want a custom `VoidEventListener`, derive from that class instead of the `EventListener<VoidChannel>` base class.
+**NOTE:** If you want a custom [`VoidEventListener`](listeners/void-event-listener.md), derive from that class instead of the [`EventListener<TChannel>`](listeners/event-listener.md) base class.
 This will ensure you also get the custom editor for manually invoking the event.
