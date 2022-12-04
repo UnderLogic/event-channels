@@ -76,3 +76,5 @@ crashlytics-build.properties
 # JetBrains IDE
 .idea/
 
+# mdbook generated files
+Documentation~/book
