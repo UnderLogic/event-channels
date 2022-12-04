@@ -10,6 +10,8 @@ namespace UnderLogic.Channels.Listeners
         [Space]
         public UnityEvent onEventRaised;
 
+        public TChannel Channel => channel;
+
         private void OnEnable()
         {
             if (channel != null)
@@ -31,6 +33,8 @@ namespace UnderLogic.Channels.Listeners
 
         [Space]
         public UnityEvent<T> onEventRaised;
+        
+        public TChannel Channel => channel;
 
         private void OnEnable()
         {
