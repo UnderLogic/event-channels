@@ -25,6 +25,10 @@
 - [Listeners](listeners.md)
   - [EventListener\<TChannel>](listeners/event-listener.md)
   - [EventListener\<T, TChannel>](listeners/event-listener-generic.md)
+  - [BoolEventListener](listeners/bool-event-listener.md)
+  - [DoubleEventListener](listeners/double-event-listener.md)
+  - [FloatEventListener](listeners/float-event-listener.md)
+  - [IntEventListener](listeners/int-event-listener.md)
+  - [StringEventListener](listeners/string-event-listener.md)
+  - [TransformEventListener](listeners/transform-event-listener.md)
   - [VoidEventListener](listeners/void-event-listener.md)
-
-

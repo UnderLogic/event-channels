@@ -17,7 +17,7 @@ Listens for events on a non-data event channel `TChannel` and invokes actions wh
 
 ## Public Methods
 
-- `RaiseEvent()` - Manually raises the `onEventRaised` on the component.
+- `RaiseEvent()` - Manually raises `onEventRaised` on the component.
 
 **NOTE:** Manually raising the event will only trigger the `UnityEvent` actions on **this** component.
 It will **not** raise an event on the `Channel` itself.

@@ -17,7 +17,7 @@ Listens for events on a event channel `TChannel` and invokes actions with `T` wh
 
 ## Public Methods
 
-- `RaiseEvent(T)` - Manually raises the `onEventRaised` on the component with the value `T` provided.
+- `RaiseEvent(T)` - Manually raises `onEventRaised` on the component with the value `T` provided.
 
 **NOTE:** Manually raising the event will only trigger the `UnityEvent` actions on **this** component.
 It will **not** raise an event on the `Channel` itself.
