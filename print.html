@@ -1,0 +1,631 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Event Channels</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="CHANGELOG.html"><strong aria-hidden="true">2.</strong> Changelog</a></li><li class="chapter-item expanded affix "><li class="part-title">User Guide</li><li class="chapter-item expanded "><a href="installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="getting-started.html"><strong aria-hidden="true">4.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="custom-events.html"><strong aria-hidden="true">5.</strong> Custom Events</a></li><li class="chapter-item expanded "><a href="related-libraries.html"><strong aria-hidden="true">6.</strong> Related Libraries</a></li><li class="chapter-item expanded affix "><li class="part-title">Library Reference</li><li class="chapter-item expanded "><a href="channels.html"><strong aria-hidden="true">7.</strong> Channels</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="channels/event-channel.html"><strong aria-hidden="true">7.1.</strong> EventChannel</a></li><li class="chapter-item expanded "><a href="channels/event-channel-generic.html"><strong aria-hidden="true">7.2.</strong> EventChannel&lt;T&gt;</a></li><li class="chapter-item expanded "><a href="channels/bool-event-channel.html"><strong aria-hidden="true">7.3.</strong> BoolEventChannel</a></li><li class="chapter-item expanded "><a href="channels/color-event-channel.html"><strong aria-hidden="true">7.4.</strong> ColorEventChannel</a></li><li class="chapter-item expanded "><a href="channels/double-event-channel.html"><strong aria-hidden="true">7.5.</strong> DoubleEventChannel</a></li><li class="chapter-item expanded "><a href="channels/float-event-channel.html"><strong aria-hidden="true">7.6.</strong> FloatEventChannel</a></li><li class="chapter-item expanded "><a href="channels/int-event-channel.html"><strong aria-hidden="true">7.7.</strong> IntEventChannel</a></li><li class="chapter-item expanded "><a href="channels/scriptable-object-channel.html"><strong aria-hidden="true">7.8.</strong> ScriptableObjectChannel</a></li><li class="chapter-item expanded "><a href="channels/string-event-channel.html"><strong aria-hidden="true">7.9.</strong> StringEventChannel</a></li><li class="chapter-item expanded "><a href="channels/transform-event-channel.html"><strong aria-hidden="true">7.10.</strong> TransformEventChannel</a></li><li class="chapter-item expanded "><a href="channels/vector2int-event-channel.html"><strong aria-hidden="true">7.11.</strong> Vector2IntEventChannel</a></li><li class="chapter-item expanded "><a href="channels/vector2-event-channel.html"><strong aria-hidden="true">7.12.</strong> Vector2EventChannel</a></li><li class="chapter-item expanded "><a href="channels/vector3-event-channel.html"><strong aria-hidden="true">7.13.</strong> Vector3EventChannel</a></li><li class="chapter-item expanded "><a href="channels/vector4-event-channel.html"><strong aria-hidden="true">7.14.</strong> Vector4EventChannel</a></li><li class="chapter-item expanded "><a href="channels/void-event-channel.html"><strong aria-hidden="true">7.15.</strong> VoidEventChannel</a></li></ol></li><li class="chapter-item expanded "><a href="listeners.html"><strong aria-hidden="true">8.</strong> Listeners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="listeners/event-listener.html"><strong aria-hidden="true">8.1.</strong> EventListener&lt;TChannel&gt;</a></li><li class="chapter-item expanded "><a href="listeners/event-listener-generic.html"><strong aria-hidden="true">8.2.</strong> EventListener&lt;T, TChannel&gt;</a></li><li class="chapter-item expanded "><a href="listeners/bool-event-listener.html"><strong aria-hidden="true">8.3.</strong> BoolEventListener</a></li><li class="chapter-item expanded "><a href="listeners/color-event-listener.html"><strong aria-hidden="true">8.4.</strong> ColorEventListener</a></li><li class="chapter-item expanded "><a href="listeners/double-event-listener.html"><strong aria-hidden="true">8.5.</strong> DoubleEventListener</a></li><li class="chapter-item expanded "><a href="listeners/float-event-listener.html"><strong aria-hidden="true">8.6.</strong> FloatEventListener</a></li><li class="chapter-item expanded "><a href="listeners/int-event-listener.html"><strong aria-hidden="true">8.7.</strong> IntEventListener</a></li><li class="chapter-item expanded "><a href="listeners/scriptable-object-event-listener.html"><strong aria-hidden="true">8.8.</strong> ScriptableObjectEventListener</a></li><li class="chapter-item expanded "><a href="listeners/string-event-listener.html"><strong aria-hidden="true">8.9.</strong> StringEventListener</a></li><li class="chapter-item expanded "><a href="listeners/transform-event-listener.html"><strong aria-hidden="true">8.10.</strong> TransformEventListener</a></li><li class="chapter-item expanded "><a href="listeners/vector2int-event-listener.html"><strong aria-hidden="true">8.11.</strong> Vector2IntEventListener</a></li><li class="chapter-item expanded "><a href="listeners/vector2-event-listener.html"><strong aria-hidden="true">8.12.</strong> Vector2EventListener</a></li><li class="chapter-item expanded "><a href="listeners/vector3-event-listener.html"><strong aria-hidden="true">8.13.</strong> Vector3EventListener</a></li><li class="chapter-item expanded "><a href="listeners/vector4-event-listener.html"><strong aria-hidden="true">8.14.</strong> Vector4EventListener</a></li><li class="chapter-item expanded "><a href="listeners/void-event-listener.html"><strong aria-hidden="true">8.15.</strong> VoidEventListener</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Event Channels</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
+<p><img src="images/cover.png" alt="image" /></p>
+<p>Unity package library for sending and receiving events between components and across multiple scenes.</p>
+<p>Heavily inspired by the infamous <a href="https://www.youtube.com/watch?v=raQ3iHhE_Kk">Unite 2017: Game Architecture with Scriptable Objects</a> presentation by Ryan Hipple (<a href="https://github.com/roboryantron/Unite2017">GitHub</a>).</p>
+<p>Unfortunately Unity does not understand generics in the Editor and Inspectors, so only concrete types can be used.
+Fortunately, this can be made easy by deriving from a single generic type allowing the same common behaviors.</p>
+<p><strong>NOTE:</strong> This package is still in development and may have breaking changes in future versions until a stable v1.0.0 release is made.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="changelog"><a class="header" href="#changelog">Changelog</a></h1>
+<p>All notable changes to this library will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2 id="042---2022-12-28"><a class="header" href="#042---2022-12-28">[0.4.2] - 2022-12-28</a></h2>
+<h3 id="added"><a class="header" href="#added">Added</a></h3>
+<ul>
+<li><code>ScriptableObjectEventChannel</code> variant</li>
+<li><code>ScriptableObjectEventListener</code> component</li>
+<li>Icons for event channels in the Editor</li>
+<li>Icons for event listeners in the Editor</li>
+</ul>
+<h2 id="041---2022-12-08"><a class="header" href="#041---2022-12-08">[0.4.1] - 2022-12-08</a></h2>
+<h3 id="fixed"><a class="header" href="#fixed">Fixed</a></h3>
+<ul>
+<li>Missing meta files</li>
+</ul>
+<h2 id="040---2022-12-04"><a class="header" href="#040---2022-12-04">[0.4.0] - 2022-12-04</a></h2>
+<h3 id="added-1"><a class="header" href="#added-1">Added</a></h3>
+<ul>
+<li><code>ColorEventChannel</code> variant</li>
+<li><code>ColorEventListener</code> component</li>
+<li><code>Vector2IntEventChannel</code> variant</li>
+<li><code>Vector2IntEventListener</code> component</li>
+<li><code>Vector2EventChannel</code> variant</li>
+<li><code>Vector2EventListener</code> component</li>
+<li><code>Vector3EventChannel</code> variant</li>
+<li><code>Vector3EventListener</code> component</li>
+<li><code>Vector4EventChannel</code> variant</li>
+<li><code>Vector4EventListener</code> component</li>
+</ul>
+<h2 id="031---2022-12-04"><a class="header" href="#031---2022-12-04">[0.3.1] - 2022-12-04</a></h2>
+<h3 id="added-2"><a class="header" href="#added-2">Added</a></h3>
+<ul>
+<li>Docs via <code>mdbook</code> in <code>Documentation~</code> directory</li>
+<li>GitHub CI/CD workflows for documentation</li>
+</ul>
+<h3 id="changed"><a class="header" href="#changed">Changed</a></h3>
+<ul>
+<li>Exposed <code>Channel</code> getter property on <code>EventListener</code> component</li>
+</ul>
+<h2 id="030---2022-12-01"><a class="header" href="#030---2022-12-01">[0.3.0] - 2022-12-01</a></h2>
+<h3 id="added-3"><a class="header" href="#added-3">Added</a></h3>
+<ul>
+<li><code>EventChannelEditor</code> - custom editor</li>
+<li><code>EventListenerEditor&lt;TChannel&gt;</code> - abstract base class</li>
+<li><code>VoidEventListenerEditor</code> - custom editor</li>
+<li><code>RaiseEvent(int)</code> method for <code>DoubleEventChannel</code></li>
+<li><code>RaiseEvent(float)</code> method for <code>DoubleEventChannel</code></li>
+<li><code>RaiseEvent(int)</code> method for <code>FloatEventChannel</code></li>
+<li><code>RaiseEvent(bool)</code> method for <code>StringEventChannel</code></li>
+<li><code>RaiseEvent(int)</code> method for <code>StringEventChannel</code></li>
+<li><code>RaiseEvent(float)</code> method for <code>StringEventChannel</code></li>
+<li><code>RaiseEvent(double)</code> method for <code>StringEventChannel</code></li>
+<li><code>RaiseEvent(int)</code> method for <code>DoubleEventListener</code></li>
+<li><code>RaiseEvent(float)</code> method for <code>DoubleEventListener</code></li>
+<li><code>RaiseEvent(int)</code> method for <code>FloatEventListener</code></li>
+<li><code>RaiseEvent(bool)</code> method for <code>StringEventListener</code></li>
+<li><code>RaiseEvent(int)</code> method for <code>StringEventListener</code></li>
+<li><code>RaiseEvent(float)</code> method for <code>StringEventListener</code></li>
+<li><code>RaiseEvent(double)</code> method for <code>StringEventListener</code></li>
+</ul>
+<h3 id="fixed-1"><a class="header" href="#fixed-1">Fixed</a></h3>
+<ul>
+<li>Small fixes in Listeners sample scene</li>
+</ul>
+<h2 id="020---2022-12-01"><a class="header" href="#020---2022-12-01">[0.2.0] - 2022-12-01</a></h2>
+<h3 id="added-4"><a class="header" href="#added-4">Added</a></h3>
+<ul>
+<li><code>EventListener&lt;TChannel&gt;</code> abstract base class</li>
+<li><code>EventListener&lt;T, TChannel&gt;</code> abstract base class</li>
+<li><code>BoolEventListener</code> component</li>
+<li><code>DoubleEventListener</code> component</li>
+<li><code>FloatEventListener</code> component</li>
+<li><code>IntEventListener</code> component</li>
+<li><code>StringEventListener</code> component</li>
+<li><code>TransformEventListener</code> component</li>
+<li><code>VoidEventListener</code> component</li>
+<li>Listeners sample scene</li>
+</ul>
+<h3 id="fixed-2"><a class="header" href="#fixed-2">Fixed</a></h3>
+<ul>
+<li>Root namespace should now be <code>UnderLogic.Channels</code></li>
+</ul>
+<h2 id="010---2022-12-01"><a class="header" href="#010---2022-12-01">[0.1.0] - 2022-12-01</a></h2>
+<h3 id="added-5"><a class="header" href="#added-5">Added</a></h3>
+<ul>
+<li><code>EventChannel</code> abstract base class</li>
+<li><code>EventChannel&lt;T&gt;</code> abstract base class</li>
+<li><code>BoolEventChannel</code> variant</li>
+<li><code>DoubleEventChannel</code> variant</li>
+<li><code>FloatEventChannel</code> variant</li>
+<li><code>IntEventChannel</code> variant</li>
+<li><code>StringEventChannel</code> variant</li>
+<li><code>TransformEventChannel</code> variant</li>
+<li><code>VoidEventChannel</code> variant</li>
+<li>Channels sample scene</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<h2 id="openupm"><a class="header" href="#openupm">OpenUPM</a></h2>
+<p><a href="https://openupm.com/">OpenUPM</a> is an open source Unity package registry that allows you to easily install thousands of packages.</p>
+<p>You can install this library with the following CLI command:</p>
+<pre><code class="language-shell">$ openupm add com.underlogic.event-channels
+</code></pre>
+<h2 id="git-url"><a class="header" href="#git-url">Git URL</a></h2>
+<p>Starting with Unity 2019.3 you can add packages via git url.
+You can add this package by the following url: <code>https://github.com/UnderLogic/event-channels</code></p>
+<p>Using this method will allow you to update the package through the Unity Package Manager.</p>
+<h2 id="local-package"><a class="header" href="#local-package">Local Package</a></h2>
+<p>Alternatively, you can clone the git repository and add the package locally.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+<h2 id="context"><a class="header" href="#context">Context</a></h2>
+<p>To best understand the purpose of this library and the problems it solves,
+it is highly recommended to watch the <a href="https://www.youtube.com/watch?v=raQ3iHhE_Kk">Unite 2017: Game Architecture with Scriptable Objects</a>
+by Ryan Hipple.</p>
+<h2 id="use-cases"><a class="header" href="#use-cases">Use Cases</a></h2>
+<h3 id="event-bus"><a class="header" href="#event-bus">Event Bus</a></h3>
+<p>The common case of needing to notify various components of events within an application, potentially across multiple scenes.
+Includes the ability to chain events to cascade logic and triggers in sequence.
+Easy to drag and drop references in the Editor and view/modify them in the Inspector during play mode.</p>
+<h3 id="decoupling"><a class="header" href="#decoupling">Decoupling</a></h3>
+<p>The common case of having multiple observers of a single event being able to react independently of each other.
+For example, playing a sound while also showing a game over screen when the player dies.
+This helps enforce the single responsibility principle as well as reduce tight coupling between types.</p>
+<h3 id="event-based-architecture"><a class="header" href="#event-based-architecture">Event-Based Architecture</a></h3>
+<p>The case of only wanting to update or perform actions when necessary (reactively) instead of wastefully computing each frame.
+This is very common in UI-heavy applications.</p>
+<p>See <code>runtime-variables</code> library in the <a href="related-libraries.html">related-libraries</a> section for working with observable variables
+and <code>runtime-collections</code> library in the <a href="related-libraries.html">related-libraries</a> section for working with observable collections.</p>
+<h2 id="samples"><a class="header" href="#samples">Samples</a></h2>
+<p>The <code>Samples~</code> folder contains sample scenes showcasing various aspects of the library in action.
+It is recommended to import and play around with them in Unity to get a feel for how to use the library.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="custom-events"><a class="header" href="#custom-events">Custom Events</a></h1>
+<p>While this library provides many of the common Unity types you will use, you may want to extend this library with your own custom events specific to your application.
+Fortunately, this is rather easy and typically only involves creating a derived class from one of the base classes.
+You may also add any additional helper properties and methods as you need.</p>
+<h2 id="channels"><a class="header" href="#channels">Channels</a></h2>
+<ol>
+<li>Create a new class that derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>, where <code>T</code> should be the type of event data.</li>
+<li>Ensure the new type is marked with the <code>CreateAssetMenu</code> attribute, so you can create instances in the Editor.</li>
+<li>Create any instances of the new event channel in your <code>Assets</code> folder.</li>
+<li>Now you can use them throughout your application.</li>
+</ol>
+<p><strong>NOTE:</strong> If you want a custom <a href="channels/void-event-channel.html"><code>VoidEventChannel</code></a>, derive from that class instead of the <a href="channels/event-channel.html"><code>EventChannel</code></a> base class. 
+This will ensure you also get the custom editor for manually invoking the event.</p>
+<h2 id="listeners"><a class="header" href="#listeners">Listeners</a></h2>
+<ol>
+<li>Create a new class that derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a> where <code>T</code> should be the underlying type and <code>TChannel</code> is the event channel type.</li>
+<li>Now you can use the event listener in your components</li>
+</ol>
+<p><strong>NOTE:</strong> If you want a custom <a href="listeners/void-event-listener.html"><code>VoidEventListener</code></a>, derive from that class instead of the <a href="listeners/event-listener.html"><code>EventListener&lt;TChannel&gt;</code></a> base class.
+This will ensure you also get the custom editor for manually invoking the event.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="related-libraries"><a class="header" href="#related-libraries">Related Libraries</a></h1>
+<ul>
+<li><a href="https://github.com/UnderLogic/runtime-variables">Runtime Variables</a> <a href="https://openupm.com/packages/com.underlogic.runtime-variables/"><img src="https://img.shields.io/npm/v/com.underlogic.runtime-variables?label=openupm&amp;registry_uri=https://package.openupm.com" alt="openupm" /></a></li>
+<li><a href="https://github.com/UnderLogic/runtime-collections">Runtime Collections</a> <a href="https://openupm.com/packages/com.underlogic.runtime-collections/"><img src="https://img.shields.io/npm/v/com.underlogic.runtime-collections?label=openupm&amp;registry_uri=https://package.openupm.com" alt="openupm" /></a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="channels-1"><a class="header" href="#channels-1">Channels</a></h1>
+<h2 id="overview-1"><a class="header" href="#overview-1">Overview</a></h2>
+<p>Event channels are implemented as <code>ScriptableObject</code> instances that can be raise events between components and across scenes.
+They provide a <code>UnityAction</code> event when an event is raised.</p>
+<p>Many of the event channels provide helper methods that make it easier to raise events from other components, including <code>UnityEvent</code> bindings.
+This can be especially useful when using the <a href="listeners.html">Listener</a> components.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="eventchannel"><a class="header" href="#eventchannel">EventChannel</a></h1>
+<p>Abstract base class that all other non-data event channels derive from.</p>
+<h2 id="description"><a class="header" href="#description">Description</a></h2>
+<p>Represents an event channel that can raise events which do not contain any associated data.</p>
+<h2 id="public-events"><a class="header" href="#public-events">Public Events</a></h2>
+<ul>
+<li><code>EventRaised : UnityAction</code> - Invoked when an event is raised on the channel.</li>
+</ul>
+<h2 id="public-methods"><a class="header" href="#public-methods">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent()</code> - Raises an event on the channel.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="eventchannelt"><a class="header" href="#eventchannelt">EventChannel&lt;T&gt;</a></h1>
+<p>Abstract base class that all other data event channels derive from.</p>
+<h2 id="description-1"><a class="header" href="#description-1">Description</a></h2>
+<p>Represents an event channel that can raise events containing a value <code>T</code>.</p>
+<h2 id="public-events-1"><a class="header" href="#public-events-1">Public Events</a></h2>
+<ul>
+<li><code>EventRaised : UnityAction&lt;T&gt;</code> - Invoked when an event is raised on the channel.</li>
+</ul>
+<h2 id="public-methods-1"><a class="header" href="#public-methods-1">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(T)</code> - Raises an event on the channel with the value <code>T</code> provided.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="booleventchannel"><a class="header" href="#booleventchannel">BoolEventChannel</a></h1>
+<p>Derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>.</p>
+<h2 id="description-2"><a class="header" href="#description-2">Description</a></h2>
+<p>Represents an event channel that can raise events containing a <code>bool</code> value.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="coloreventchannel"><a class="header" href="#coloreventchannel">ColorEventChannel</a></h1>
+<p>Derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>.</p>
+<h2 id="description-3"><a class="header" href="#description-3">Description</a></h2>
+<p>Represents an event channel that can raise events containing a <code>Color</code> value.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="doubleeventchannel"><a class="header" href="#doubleeventchannel">DoubleEventChannel</a></h1>
+<p>Derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>.</p>
+<h2 id="description-4"><a class="header" href="#description-4">Description</a></h2>
+<p>Represents an event channel that can raise events containing a <code>double</code> value.</p>
+<h2 id="public-methods-2"><a class="header" href="#public-methods-2">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(int)</code> - Raises an event on the channel with the signed <code>int</code> value provided.</li>
+<li><code>RaiseEvent(float)</code> - Raises an event on the channel with the <code>float</code> value provided.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="floateventchannel"><a class="header" href="#floateventchannel">FloatEventChannel</a></h1>
+<p>Derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>.</p>
+<h2 id="description-5"><a class="header" href="#description-5">Description</a></h2>
+<p>Represents an event channel that can raise events containing a <code>float</code> value.</p>
+<h2 id="public-methods-3"><a class="header" href="#public-methods-3">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(int)</code> - Raises an event on the channel with the signed <code>int</code> value provided.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="inteventchannel"><a class="header" href="#inteventchannel">IntEventChannel</a></h1>
+<p>Derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>.</p>
+<h2 id="description-6"><a class="header" href="#description-6">Description</a></h2>
+<p>Represents an event channel that can raise events containing a <code>int</code> value.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="scriptableobjectchannel"><a class="header" href="#scriptableobjectchannel">ScriptableObjectChannel</a></h1>
+<p>Derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>.</p>
+<h2 id="description-7"><a class="header" href="#description-7">Description</a></h2>
+<p>Represents an event channel that can raise events containing a <code>ScriptableObject</code> value.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="stringeventchannel"><a class="header" href="#stringeventchannel">StringEventChannel</a></h1>
+<p>Derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>.</p>
+<h2 id="description-8"><a class="header" href="#description-8">Description</a></h2>
+<p>Represents an event channel that can raise events containing a <code>string</code> value.</p>
+<h2 id="public-methods-4"><a class="header" href="#public-methods-4">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(bool)</code> - Raises an event on the channel with the string representation of the <code>bool</code> value provided.</li>
+<li><code>RaiseEvent(int)</code> - Raises an event on the channel with the string representation of the signed <code>int</code> value provided.</li>
+<li><code>RaiseEvent(float)</code> - Raises an event on the channel with the string representation of the <code>float</code> value provided.</li>
+<li><code>RaiseEvent(double)</code> - Raises an event on the channel with the string representation of the <code>double</code> value provided.</li>
+</ul>
+<p><strong>NOTE:</strong> The <code>RaiseEvent()</code> methods will format the string using the <code>CultureInfo.CurrentCulture</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="transformeventchannel"><a class="header" href="#transformeventchannel">TransformEventChannel</a></h1>
+<p>Derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>.</p>
+<h2 id="description-9"><a class="header" href="#description-9">Description</a></h2>
+<p>Represents an event channel that can raise events containing a <code>Transform</code> value.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector2inteventchannel"><a class="header" href="#vector2inteventchannel">Vector2IntEventChannel</a></h1>
+<p>Derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>.</p>
+<h2 id="description-10"><a class="header" href="#description-10">Description</a></h2>
+<p>Represents an event channel that can raise events containing a <code>Vector2Int</code> value.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector2eventchannel"><a class="header" href="#vector2eventchannel">Vector2EventChannel</a></h1>
+<p>Derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>.</p>
+<h2 id="description-11"><a class="header" href="#description-11">Description</a></h2>
+<p>Represents an event channel that can raise events containing a <code>Vector2</code> value.</p>
+<h2 id="public-methods-5"><a class="header" href="#public-methods-5">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(Vector2Int)</code> - Raises an event on the channel with the <code>Vector2Int</code> value provided.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector3eventchannel"><a class="header" href="#vector3eventchannel">Vector3EventChannel</a></h1>
+<p>Derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>.</p>
+<h2 id="description-12"><a class="header" href="#description-12">Description</a></h2>
+<p>Represents an event channel that can raise events containing a <code>Vector3</code> value.</p>
+<h2 id="public-methods-6"><a class="header" href="#public-methods-6">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(Vector2Int)</code> - Raises an event on the channel with the <code>Vector2Int</code> value provided.</li>
+<li><code>RaiseEvent(Vector2)</code> - Raises an event on the channel with the <code>Vector2</code> value provided.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector4eventchannel"><a class="header" href="#vector4eventchannel">Vector4EventChannel</a></h1>
+<p>Derives from <a href="channels/event-channel-generic.html"><code>EventChannel&lt;T&gt;</code></a>.</p>
+<h2 id="description-13"><a class="header" href="#description-13">Description</a></h2>
+<p>Represents an event channel that can raise events containing a <code>Vector4</code> value.</p>
+<h2 id="public-methods-7"><a class="header" href="#public-methods-7">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(Vector2Int)</code> - Raises an event on the channel with the <code>Vector2Int</code> value provided.</li>
+<li><code>RaiseEvent(Vector2)</code> - Raises an event on the channel with the <code>Vector2</code> value provided.</li>
+<li><code>RaiseEvent(Vector3)</code> - Raises an event on the channel with the <code>Vector3</code> value provided.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="voideventchannel"><a class="header" href="#voideventchannel">VoidEventChannel</a></h1>
+<p>Derives from <a href="channels/event-channel.html"><code>EventChannel</code></a>.</p>
+<h2 id="description-14"><a class="header" href="#description-14">Description</a></h2>
+<p>Represents an event channel that can raise events which do not contain any data (<code>void</code>).</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<h2 id="editor"><a class="header" href="#editor">Editor</a></h2>
+<p>This event channel type has a custom editor which can be used to manually invoke the event in the Inspector.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="listeners-1"><a class="header" href="#listeners-1">Listeners</a></h1>
+<p>Event listeners are implemented as <code>MonoBehaviour</code> components that can be used to bind <code>UnityEvent</code> actions to events via the Unity Inspector.
+This allows listeners to notify other components without needing to write extra boilerplate code for subscribing and unsubscribing to those event channels.</p>
+<p>It also allows multiple actions to be triggered from a single event easily.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="eventlistenertchannel"><a class="header" href="#eventlistenertchannel">EventListener&lt;TChannel&gt;</a></h1>
+<p>Abstract base class that all other non-data event channel listeners derive from.</p>
+<h2 id="description-15"><a class="header" href="#description-15">Description</a></h2>
+<p>Listens for events on a non-data event channel <code>TChannel</code> and invokes actions when an event is raised.</p>
+<h2 id="serialized-fields-inspector"><a class="header" href="#serialized-fields-inspector">Serialized Fields (Inspector)</a></h2>
+<ul>
+<li><code>channel : TChannel</code> - The channel to listen on for events.</li>
+<li><code>onEventRaised : UnityEvent</code> - The actions to perform when an event is raised on the channel.</li>
+</ul>
+<h2 id="public-properties"><a class="header" href="#public-properties">Public Properties</a></h2>
+<ul>
+<li><code>Channel : TChannel</code> <strong>(get)</strong> - The channel being listened on for events.</li>
+</ul>
+<h2 id="public-methods-8"><a class="header" href="#public-methods-8">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent()</code> - Manually raises <code>onEventRaised</code> on the component.</li>
+</ul>
+<p><strong>NOTE:</strong> Manually raising the event will only trigger the <code>UnityEvent</code> actions on <strong>this</strong> component.
+It will <strong>not</strong> raise an event on the <code>Channel</code> itself.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="eventlistenert-tchannel"><a class="header" href="#eventlistenert-tchannel">EventListener&lt;T, TChannel&gt;</a></h1>
+<p>Abstract base class that all other data event channel listeners derive from.</p>
+<h2 id="description-16"><a class="header" href="#description-16">Description</a></h2>
+<p>Listens for events on a event channel <code>TChannel</code> and invokes actions with <code>T</code> when an event is raised.</p>
+<h2 id="serialized-fields-inspector-1"><a class="header" href="#serialized-fields-inspector-1">Serialized Fields (Inspector)</a></h2>
+<ul>
+<li><code>channel : TChannel</code> - The channel to listen on for events.</li>
+<li><code>onEventRaised : UnityEvent&lt;T&gt;</code> - The actions to perform when an event is raised on the channel.</li>
+</ul>
+<h2 id="public-properties-1"><a class="header" href="#public-properties-1">Public Properties</a></h2>
+<ul>
+<li><code>Channel : TChannel</code> <strong>(get)</strong> - The channel being listened on for events.</li>
+</ul>
+<h2 id="public-methods-9"><a class="header" href="#public-methods-9">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(T)</code> - Manually raises <code>onEventRaised</code> on the component with the value <code>T</code> provided.</li>
+</ul>
+<p><strong>NOTE:</strong> Manually raising the event will only trigger the <code>UnityEvent</code> actions on <strong>this</strong> component.
+It will <strong>not</strong> raise an event on the <code>Channel</code> itself.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="booleventlistener"><a class="header" href="#booleventlistener">BoolEventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a>.</p>
+<h2 id="description-17"><a class="header" href="#description-17">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/bool-event-channel.html"><code>BoolEventChannel</code></a> and invokes actions with a <code>bool</code> value when an event is raised.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="coloreventlistener"><a class="header" href="#coloreventlistener">ColorEventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a>.</p>
+<h2 id="description-18"><a class="header" href="#description-18">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/color-event-channel.html"><code>ColorEventChannel</code></a> and invokes actions with a <code>Color</code> value when an event is raised.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="doubleeventlistener"><a class="header" href="#doubleeventlistener">DoubleEventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a>.</p>
+<h2 id="description-19"><a class="header" href="#description-19">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/double-event-channel.html"><code>DoubleEventChannel</code></a> and invokes actions with a <code>double</code> value when an event is raised.</p>
+<h2 id="public-methods-10"><a class="header" href="#public-methods-10">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(int)</code> - Manually raises <code>onEventRaised</code> with the signed <code>int</code> value provided.</li>
+<li><code>RaiseEvent(float)</code> - Manually raises <code>onEventRaised</code> with the <code>float</code> value provided.</li>
+</ul>
+<p><strong>NOTE:</strong> Manually raising the event will only trigger the <code>UnityEvent</code> actions on <strong>this</strong> component.
+It will <strong>not</strong> raise an event on the <code>Channel</code> itself.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="floateventlistener"><a class="header" href="#floateventlistener">FloatEventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a>.</p>
+<h2 id="description-20"><a class="header" href="#description-20">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/float-event-channel.html"><code>FloatEventChannel</code></a> and invokes actions with a <code>float</code> value when an event is raised.</p>
+<h2 id="public-methods-11"><a class="header" href="#public-methods-11">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(int)</code> - Manually raises <code>onEventRaised</code> with the signed <code>int</code> value provided.</li>
+</ul>
+<p><strong>NOTE:</strong> Manually raising the event will only trigger the <code>UnityEvent</code> actions on <strong>this</strong> component.
+It will <strong>not</strong> raise an event on the <code>Channel</code> itself.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="inteventlistener"><a class="header" href="#inteventlistener">IntEventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a>.</p>
+<h2 id="description-21"><a class="header" href="#description-21">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/int-event-channel.html"><code>IntEventChannel</code></a> and invokes actions with a signed <code>int</code> value when an event is raised.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="scriptableobjecteventlistener"><a class="header" href="#scriptableobjecteventlistener">ScriptableObjectEventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a>.</p>
+<h2 id="description-22"><a class="header" href="#description-22">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/scriptable-object-event-channel.html"><code>ScriptableObjectChannel</code></a> and invokes actions with a <code>ScriptableObject</code> value when an event is raised.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="stringeventlistener"><a class="header" href="#stringeventlistener">StringEventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a>.</p>
+<h2 id="description-23"><a class="header" href="#description-23">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/string-event-channel.html"><code>StringEventChannel</code></a> and invokes actions with a <code>string</code> value when an event is raised.</p>
+<h2 id="public-methods-12"><a class="header" href="#public-methods-12">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(bool)</code> - Manually raises <code>onEventRaised</code> with the string representation of the <code>bool</code> value provided.</li>
+<li><code>RaiseEvent(int)</code> - Manually raises <code>onEventRaised</code> with the string representation of the signed <code>int</code> value provided.</li>
+<li><code>RaiseEvent(float)</code> - Manually raises <code>onEventRaised</code> with the string representation of the <code>float</code> value provided.</li>
+<li><code>RaiseEvent(double)</code> - Manually raises <code>onEventRaised</code> with the string representation of the <code>double</code> value provided.</li>
+</ul>
+<p><strong>NOTE:</strong> Manually raising the event will only trigger the <code>UnityEvent</code> actions on <strong>this</strong> component.
+It will <strong>not</strong> raise an event on the <code>Channel</code> itself.</p>
+<p><strong>NOTE:</strong> The <code>RaiseEvent()</code> methods will format the string using the <code>CultureInfo.CurrentCulture</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="transformeventlistener"><a class="header" href="#transformeventlistener">TransformEventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a>.</p>
+<h2 id="description-24"><a class="header" href="#description-24">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/transform-event-channel.html"><code>TransformEventChannel</code></a> and invokes actions with a <code>Transform</code> value when an event is raised.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector2inteventlistener"><a class="header" href="#vector2inteventlistener">Vector2IntEventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a>.</p>
+<h2 id="description-25"><a class="header" href="#description-25">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/vector2int-event-channel.html"><code>Vector2IntEventChannel</code></a> and invokes actions with a <code>Vector2Int</code> value when an event is raised.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector2eventlistener"><a class="header" href="#vector2eventlistener">Vector2EventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a>.</p>
+<h2 id="description-26"><a class="header" href="#description-26">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/vector2-event-channel.html"><code>Vector2EventChannel</code></a> and invokes actions with a <code>Vector2</code> value when an event is raised.</p>
+<h2 id="public-methods-13"><a class="header" href="#public-methods-13">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(Vector2Int)</code> - Manually raises <code>onEventRaised</code> with the <code>Vector2Int</code> value provided.</li>
+</ul>
+<p><strong>NOTE:</strong> Manually raising the event will only trigger the <code>UnityEvent</code> actions on <strong>this</strong> component.
+It will <strong>not</strong> raise an event on the <code>Channel</code> itself.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector3eventlistener"><a class="header" href="#vector3eventlistener">Vector3EventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a>.</p>
+<h2 id="description-27"><a class="header" href="#description-27">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/vector3-event-channel.html"><code>Vector3EventChannel</code></a> and invokes actions with a <code>Vector3</code> value when an event is raised.</p>
+<h2 id="public-methods-14"><a class="header" href="#public-methods-14">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(Vector2Int)</code> - Manually raises <code>onEventRaised</code> with the <code>Vector2Int</code> value provided.</li>
+<li><code>RaiseEvent(Vector2)</code> - Manually raises <code>onEventRaised</code> with the <code>Vector2</code> value provided.</li>
+</ul>
+<p><strong>NOTE:</strong> Manually raising the event will only trigger the <code>UnityEvent</code> actions on <strong>this</strong> component.
+It will <strong>not</strong> raise an event on the <code>Channel</code> itself.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector4eventlistener"><a class="header" href="#vector4eventlistener">Vector4EventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener-generic.html"><code>EventListener&lt;T, TChannel&gt;</code></a>.</p>
+<h2 id="description-28"><a class="header" href="#description-28">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/vector4-event-channel.html"><code>Vector4EventChannel</code></a> and invokes actions with a <code>Vector4</code> value when an event is raised.</p>
+<h2 id="public-methods-15"><a class="header" href="#public-methods-15">Public Methods</a></h2>
+<ul>
+<li><code>RaiseEvent(Vector2Int)</code> - Manually raises <code>onEventRaised</code> with the <code>Vector2Int</code> value provided.</li>
+<li><code>RaiseEvent(Vector2)</code> - Manually raises <code>onEventRaised</code> with the <code>Vector2</code> value provided.</li>
+<li><code>RaiseEvent(Vector3)</code> - Manually raises <code>onEventRaised</code> with the <code>Vector3</code> value provided.</li>
+</ul>
+<p><strong>NOTE:</strong> Manually raising the event will only trigger the <code>UnityEvent</code> actions on <strong>this</strong> component.
+It will <strong>not</strong> raise an event on the <code>Channel</code> itself.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="voideventlistener"><a class="header" href="#voideventlistener">VoidEventListener</a></h1>
+<p>Derives from <a href="listeners/event-listener.html"><code>EventListener&lt;TChannel&gt;</code></a>.</p>
+<h2 id="description-29"><a class="header" href="#description-29">Description</a></h2>
+<p>Listens for events on a <a href="listeners/../channels/void-event-channel.html"><code>VoidEventChannel</code></a> and invokes actions when an event is raised.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<h2 id="editor-1"><a class="header" href="#editor-1">Editor</a></h2>
+<p>This event listener has a custom editor which can be used to manually invoke the event in the Inspector.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
