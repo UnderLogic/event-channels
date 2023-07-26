@@ -9,7 +9,7 @@ Uses `ScriptableObjects` to represent event channels and exposes events for subs
 
 Heavily inspired by the infamous [Unite 2017: Game Architecture with Scriptable Objects](https://www.youtube.com/watch?v=raQ3iHhE_Kk) presentation by Ryan Hipple ([GitHub](https://github.com/roboryantron/Unite2017)).
 
-**NOTE:** This package is still in development and may have breaking changes in future versions until a stable v1.0.0 release is made.
+:exclamation: **This repository is no longer maintained.** :exclamation:
 
 ## Installation
 
