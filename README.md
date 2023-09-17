@@ -11,6 +11,11 @@ Heavily inspired by the infamous [Unite 2017: Game Architecture with Scriptable 
 
 :exclamation: **This repository is no longer maintained.** :exclamation:
 
+## So long Unity...
+
+**Due to Unity's decision to change pricing model to effectively charge developers microtransaction costs for installs, we are no longer working with Unity or building/maintaining package libraries for it.**
+We will be migrating to Godot 4 for all projects.
+
 ## Installation
 
 The package library can be installed to your Unity project in the following ways:
